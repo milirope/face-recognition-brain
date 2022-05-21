@@ -28,13 +28,15 @@ class Signin extends React.Component {
     })
       .then(response => response.json())
       .then(user => {
-        if (user.id) {
-          this.props.loadUser(user)
-          this.props.onRouteChange('home');
-        }
-      })
+        if(user.id){ // does the user exist? Did we receive a user with a property of id?
+        this.props.loadUser(user);
+        this.props.onRouteChange('home');
+      }
+    })
   }
 
+  // <Signin loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
+  // <Rank name={this.state.user.name} entries={this.state.user.entries}/>
   render() {
     const { onRouteChange } = this.props;
     return (
